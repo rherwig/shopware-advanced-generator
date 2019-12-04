@@ -4,13 +4,13 @@ import mock from 'mock-fs';
 import Discovery from './discovery';
 
 describe('discovery service', () => {
-    let bottle = new Bottle();
+    const bottle = new Bottle();
 
     beforeAll(() => {
         mock({
             '/var/test': {
-                'custom': {
-                    'plugins': {},
+                custom: {
+                    plugins: {},
                 },
             },
         }, {

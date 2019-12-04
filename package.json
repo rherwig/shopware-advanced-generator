@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node -r @babel/register src/index.js",
     "test": "jest --passWithNoTests",
+    "lint": "eslint src/",
     "build": "rollup -c",
     "watch": "rollup -cw"
   },
@@ -17,7 +18,12 @@
     "@babel/plugin-transform-runtime": "^7.6.2",
     "@babel/preset-env": "^7.7.1",
     "@babel/register": "^7.7.0",
+    "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
+    "eslint": "^6.7.2",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^23.1.1",
     "jest": "^24.9.0",
     "mock-fs": "^4.10.3",
     "rollup": "^1.26.5",

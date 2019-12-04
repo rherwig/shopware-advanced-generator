@@ -6,7 +6,7 @@ import { existsSync, readFileSync } from 'fs';
 import Template from './template';
 
 describe('file service', () => {
-    let bottle = new Bottle();
+    const bottle = new Bottle();
 
     const templateDir = resolve(__dirname, 'templates');
     const outDir = resolve(__dirname, 'out');
@@ -14,14 +14,14 @@ describe('file service', () => {
     beforeAll(() => {
         mock({
             [templateDir]: {
-                'plugin': {
+                plugin: {
                     'template.vm': '$content',
                     'template-2.vm': '$content',
                 },
             },
             [outDir]: {
-                'custom': {
-                    'plugins': {},
+                custom: {
+                    plugins: {},
                 },
             },
         });
@@ -67,11 +67,9 @@ describe('file service', () => {
         const src = resolve(templateDir, 'plugin', 'template.vm');
         const dest = resolve(outDir, 'template');
 
-        const middleware = (content) => {
-            return `${content}!`;
-        };
+        const middleware = (content) => `${content}!`;
 
-        copy(src, dest, [ middleware ]);
+        copy(src, dest, [middleware]);
 
         const endsWithExclamation = readFileSync(
             dest,

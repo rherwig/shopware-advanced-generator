@@ -1,13 +1,9 @@
 import { join } from 'path';
 import { existsSync } from 'fs';
 
-const isPluginsDir = (path = process.cwd()) => {
-    return path.endsWith(join('custom', 'plugins'));
-};
+const isPluginsDir = (path = process.cwd()) => path.endsWith(join('custom', 'plugins'));
 
-const isProjectRoot = () => {
-    return existsSync(join(process.cwd(), 'custom', 'plugins'));
-};
+const isProjectRoot = () => existsSync(join(process.cwd(), 'custom', 'plugins'));
 
 const getPluginsDir = () => {
     if (!isProjectRoot()) {
@@ -17,10 +13,8 @@ const getPluginsDir = () => {
     return join(process.cwd(), 'custom', 'plugins');
 };
 
-export default () => {
-    return {
-        isProjectRoot,
-        isPluginsDir,
-        getPluginsDir,
-    };
-};
+export default () => ({
+    isProjectRoot,
+    isPluginsDir,
+    getPluginsDir,
+});

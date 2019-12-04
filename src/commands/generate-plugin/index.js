@@ -1,9 +1,18 @@
+import signale from 'signale';
+
 import inquire from './inquiries';
 import generatePlugin from './core';
+import bottle from '../../container';
 
 const action = async () => {
+    const { Discovery } = bottle.container;
+
+    if (!Discovery.isProjectRoot()) {
+        throw new Error('Please execute the command from the root directory of your project.');
+    }
+
     const inquiry = await inquire();
-    return await generatePlugin(inquiry);
+    return generatePlugin(inquiry);
 };
 
 /**
@@ -16,6 +25,10 @@ export default (program) => {
         .command('create-plugin')
         .description('Create a new Shopware 6 plugin')
         .action(async () => {
-            return await action();
+            try {
+                await action();
+            } catch (err) {
+                signale.error(err.message);
+            }
         });
 };

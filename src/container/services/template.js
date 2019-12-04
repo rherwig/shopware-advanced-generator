@@ -1,5 +1,5 @@
 import { readFileSync, writeFileSync, existsSync } from 'fs';
-import { resolve, dirname, basename, sep } from 'path';
+import { resolve, dirname, basename } from 'path';
 import Velocity from 'velocityjs';
 import glob from 'glob-all';
 import mkdirp from 'mkdirp';
@@ -14,9 +14,7 @@ import mkdirp from 'mkdirp';
  * @param middlewares {Array<Function<string>>} Middleware functions
  */
 const copy = (src, dest, middlewares = []) => {
-    const contents = middlewares.reduce((result, middlware) => {
-        return middlware(result);
-    }, readFileSync(src, 'utf-8'));
+    const contents = middlewares.reduce((result, middlware) => middlware(result), readFileSync(src, 'utf-8'));
 
     writeFileSync(dest, contents, 'utf-8');
 };
@@ -29,9 +27,7 @@ const copy = (src, dest, middlewares = []) => {
  * @returns {Function}
  */
 const process = (Config, Discovery) => (file, context = {}, name = undefined) => {
-    const templateMiddleware = (contents) => {
-        return Velocity.render(contents, context);
-    };
+    const templateMiddleware = (contents) => Velocity.render(contents, context);
 
     const pluginName = context.plugin.vendor + context.plugin.name;
     const src = resolve(Config.templateDir, context.type, `${file}.vm`);
@@ -45,7 +41,7 @@ const process = (Config, Discovery) => (file, context = {}, name = undefined) =>
 
     const _dest = name ? resolve(destDir, name) : resolve(destDir, destFile);
 
-    copy(src, _dest, [ templateMiddleware ]);
+    copy(src, _dest, [templateMiddleware]);
 };
 
 /**
@@ -53,17 +49,13 @@ const process = (Config, Discovery) => (file, context = {}, name = undefined) =>
  *
  * @returns {Array<string>} Template file paths
  */
-const collect = (Config) => (root = '') => {
-    return glob.sync(['**/*.vm'], {
-        cwd: resolve(Config.templateDir, root),
-        dot: true,
-    }).map(path => path.replace(/\.vm$/, ''));
-};
+const collect = (Config) => (root = '') => glob.sync(['**/*.vm'], {
+    cwd: resolve(Config.templateDir, root),
+    dot: true,
+}).map(path => path.replace(/\.vm$/, ''));
 
-export default (Config, Discovery) => {
-    return {
-        copy,
-        process: process(Config, Discovery),
-        collect: collect(Config),
-    };
-};
+export default (Config, Discovery) => ({
+    copy,
+    process: process(Config, Discovery),
+    collect: collect(Config),
+});

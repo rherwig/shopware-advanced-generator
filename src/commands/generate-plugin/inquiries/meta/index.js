@@ -25,6 +25,4 @@ const questions = [
     },
 ];
 
-export default async () => {
-    return await inquirer.prompt(questions);
-};
+export default async () => inquirer.prompt(questions);

@@ -3,7 +3,7 @@ import Bottle from 'bottlejs';
 import registerServices from './index';
 
 describe('register services', () => {
-    let bottle = new Bottle();
+    const bottle = new Bottle();
 
     beforeAll(() => {
         registerServices(bottle);

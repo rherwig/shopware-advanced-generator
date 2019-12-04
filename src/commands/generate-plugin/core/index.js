@@ -3,22 +3,11 @@ import { pascal, kebab, title } from 'change-case';
 
 import bottle from '../../../container';
 
-export default (inquiry) => new Promise(async (resolve, reject) => {
+export default (inquiry) => new Promise((resolve) => {
     const { Template } = bottle.container;
 
     const defaultTemplates = Template.collect('plugin');
     const exludedTemplates = [];
-
-    // TODO: Acquire the values via commander
-    // const inquiry = {
-    //     include: {
-    //         styleLint: features.styleLint.include,
-    //     },
-    // };
-
-    // if (!inquiry.include.styleLint) {
-    //     exludedTemplates.push(...features.styleLint.exclude);
-    // }
 
     const context = {
         type: 'plugin',
@@ -34,17 +23,13 @@ export default (inquiry) => new Promise(async (resolve, reject) => {
         },
     };
 
-    const templates = defaultTemplates.filter(template =>
-        !exludedTemplates.includes(template)
-    );
+    const templates = defaultTemplates.filter(template => !exludedTemplates.includes(template));
 
     templates.forEach(template => {
         if (template.includes('Plugin')) {
             Template.process(template, context, `${context.plugin.name}.php`);
             return;
         }
-
-        console.log(template);
 
         Template.process(template, context);
     });

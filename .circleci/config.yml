@@ -14,4 +14,5 @@ jobs:
           paths:
             - node_modules
           key: dependency-cache-{{ checksum "package-lock.json" }}
+      - run: npm run lint
       - run: npm test

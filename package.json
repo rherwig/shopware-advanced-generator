@@ -1,0 +1,41 @@
+{
+  "name": "@hrwg/swag",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node -r @babel/register src/index.js",
+    "test": "jest --passWithNoTests",
+    "build": "rollup -c",
+    "watch": "rollup -cw"
+  },
+  "bin": {
+    "swag": "./lib/swag.js"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.0",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/register": "^7.7.0",
+    "babel-jest": "^24.9.0",
+    "jest": "^24.9.0",
+    "mock-fs": "^4.10.3",
+    "rollup": "^1.26.5",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.7.2",
+    "bottlejs": "^1.7.2",
+    "change-case": "^3.1.0",
+    "commander": "^4.0.1",
+    "fs-utils": "^0.7.0",
+    "glob-all": "^3.1.0",
+    "inquirer": "^7.0.0",
+    "mkdirp": "^0.5.1",
+    "ora": "^4.0.2",
+    "signale": "^1.4.0",
+    "velocityjs": "^2.0.0"
+  }
+}

@@ -1,7 +1,8 @@
 {
   "name": "@hrwg/swag",
   "version": "1.0.0",
-  "main": "src/index.js",
+  "description": "Scaffolding CLI for Shopware 6 that creates plugins, elements and much more.",
+  "main": "lib/index.js",
   "scripts": {
     "start": "node -r @babel/register src/index.js",
     "test": "jest --passWithNoTests",

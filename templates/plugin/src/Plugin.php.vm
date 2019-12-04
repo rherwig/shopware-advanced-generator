@@ -1,0 +1,10 @@
+<?php declare(strict_types=1);
+
+namespace ${plugin.vendor}\\${plugin.name};
+
+use Shopware\Core\Framework\Plugin;
+
+class ${plugin.name} extends Plugin
+{
+
+}

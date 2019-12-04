@@ -1,0 +1,31 @@
+#set($s='\\')
+{
+  "name": "$composer.vendor/$composer.name",
+  "description": "$plugin.description",
+  "type": "shopware-platform-plugin",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "$plugin.author"
+    }
+  ],
+  "require": {
+    "shopware/core": "*",
+    "shopware/storefront": "*",
+    "shopware/administration": "*"
+  },
+  "extra": {
+    "shopware-plugin-class": "${plugin.vendor}${s}${plugin.name}${s}${plugin.vendor}${plugin.name}",
+    "label": {
+      "en-GB": "$plugin.name"
+    },
+    "description": {
+      "en-GB": "$plugin.description"
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "${plugin.vendor}${s}${plugin.name}${s}": "src/"
+    }
+  }
+}

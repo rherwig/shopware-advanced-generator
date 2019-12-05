@@ -22,7 +22,7 @@ const action = async () => {
  */
 export default (program) => {
     program
-        .command('create-plugin')
+        .command('plugin:create')
         .description('Create a new Shopware 6 plugin')
         .action(async () => {
             try {

@@ -23,11 +23,11 @@ export default {
             exclude: 'node_modules/**',
             runtimeHelpers: true,
         }),
-        commonjs(),
-        json(),
-        nodeResolve({
-            browser: true,
+        commonjs({
+            include: 'node_modules/**',
         }),
+        json(),
+        nodeResolve(),
         shebang(),
     ],
 };

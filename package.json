@@ -9,7 +9,7 @@
     "lint": "eslint src/",
     "build": "rollup -c",
     "watch": "rollup -cw",
-    "postinstall": "npm run build"
+    "prepare": "npm run build"
   },
   "bin": {
     "swag": "./lib/swag.js"

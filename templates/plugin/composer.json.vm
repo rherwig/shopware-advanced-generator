@@ -15,7 +15,7 @@
     "shopware/administration": "*"
   },
   "extra": {
-    "shopware-plugin-class": "${plugin.vendor}${s}${plugin.name}${s}${plugin.vendor}${plugin.name}",
+    "shopware-plugin-class": "${plugin.vendor}${s}${plugin.name}${s}${plugin.name}",
     "label": {
       "en-GB": "$plugin.name"
     },

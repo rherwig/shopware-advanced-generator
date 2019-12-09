@@ -2,12 +2,13 @@ import signale from 'signale';
 import { pascal, kebab, title } from 'change-case';
 
 import bottle from '../../../container';
+import { EXLUDED_TEMPLATES } from '../../../constants/defaults';
 
 export default (inquiry) => new Promise((resolve) => {
     const { Template } = bottle.container;
 
     const defaultTemplates = Template.collect('plugin');
-    const exludedTemplates = [];
+    const exludedTemplates = EXLUDED_TEMPLATES;
 
     const context = {
         type: 'plugin',
@@ -24,12 +25,13 @@ export default (inquiry) => new Promise((resolve) => {
     };
 
     const templates = defaultTemplates.filter(template => !exludedTemplates.includes(template));
+    console.log(templates);
 
     templates.forEach(template => {
-        if (template.includes('Plugin')) {
-            Template.process(template, context, `${context.plugin.name}.php`);
-            return;
-        }
+        // if (template.includes('Plugin')) {
+        //     Template.process(template, context, `${context.plugin.name}.php`);
+        //     return;
+        // }
 
         Template.process(template, context);
     });

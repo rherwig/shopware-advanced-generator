@@ -1,4 +1,4 @@
-import registerGeneratePlugin from './generate-plugin';
+import registerGeneratePlugin from './plugin-create';
 
 /**
  * Registers all available commands.

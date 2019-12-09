@@ -26,22 +26,25 @@ const copy = (src, dest, middlewares = []) => {
  * @param Discovery
  * @returns {Function}
  */
-const process = (Config, Discovery) => (file, context = {}, name = undefined) => {
+const process = (Config, Discovery, Manifest) => (file, context = {}, name = undefined) => {
     const templateMiddleware = (contents) => Velocity.render(contents, context);
 
+    const manifest = Manifest.parse(context.type, context);
     const pluginName = context.plugin.vendor + context.plugin.name;
-    const src = resolve(Config.templateDir, context.type, `${file}.vm`);
-    const dest = resolve(Discovery.getPluginsDir(), pluginName, file);
+    const fileName = manifest ? manifest.files[file] || file : file;
 
-    const destFile = basename(dest);
+    console.log('file', file);
+    console.log('manifest', manifest);
+
+    const src = resolve(Config.templateDir, context.type, `${file}.vm`);
+    const dest = resolve(Discovery.getPluginsDir(), pluginName, fileName);
+
     const destDir = dirname(dest);
     if (!existsSync(destDir)) {
         mkdirp.sync(destDir);
     }
 
-    const _dest = name ? resolve(destDir, name) : resolve(destDir, destFile);
-
-    copy(src, _dest, [templateMiddleware]);
+    copy(src, dest, [templateMiddleware]);
 };
 
 /**
@@ -54,8 +57,8 @@ const collect = (Config) => (root = '') => glob.sync(['**/*.vm'], {
     dot: true,
 }).map(path => path.replace(/\.vm$/, ''));
 
-export default (Config, Discovery) => ({
+export default (Config, Discovery, Manifest) => ({
     copy,
-    process: process(Config, Discovery),
+    process: process(Config, Discovery, Manifest),
     collect: collect(Config),
 });

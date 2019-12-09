@@ -1,0 +1,5 @@
+{
+  "files": {
+    "src/Plugin.php": "src/${plugin.name}.php"
+  }
+}

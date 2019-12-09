@@ -16,4 +16,12 @@ describe('register services', () => {
     it('contains template service', () => {
         expect(bottle.container.Template).toBeDefined();
     });
+
+    it('contains dicovery service', () => {
+        expect(bottle.container.Discovery).toBeDefined();
+    });
+
+    it('contains manifest service', () => {
+        expect(bottle.container.Manifest).toBeDefined();
+    });
 });

@@ -24,6 +24,7 @@ module.exports = {
         }],
         'import/no-extraneous-dependencies': 'off',
         'import/no-dynamic-require': 'off',
+        'import/prefer-default-export': 'off',
         'arrow-parens': 'off',
         'indent': ['error', 4],
         'no-shadow': 'warn',
@@ -34,5 +35,6 @@ module.exports = {
         'no-trailing-spaces': 'off',
         'no-restricted-globals': 'off',
         'no-param-reassign': 'off',
+        'no-template-curly-in-string': 'off',
     },
 };

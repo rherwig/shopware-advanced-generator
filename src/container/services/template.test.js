@@ -37,7 +37,13 @@ describe('file service', () => {
             },
         }));
 
-        bottle.service('Template', Template, 'Config', 'Discovery');
+        bottle.service('Manifest', () => ({
+            parse() {
+                return {};
+            },
+        }));
+
+        bottle.service('Template', Template, 'Config', 'Discovery', 'Manifest');
     });
 
     afterAll(() => {

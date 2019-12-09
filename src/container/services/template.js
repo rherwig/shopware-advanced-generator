@@ -1,5 +1,5 @@
 import { readFileSync, writeFileSync, existsSync } from 'fs';
-import { resolve, dirname, basename } from 'path';
+import { resolve, dirname } from 'path';
 import Velocity from 'velocityjs';
 import glob from 'glob-all';
 import mkdirp from 'mkdirp';
@@ -24,17 +24,17 @@ const copy = (src, dest, middlewares = []) => {
  *
  * @param Config
  * @param Discovery
+ * @param Manifest
  * @returns {Function}
  */
-const process = (Config, Discovery, Manifest) => (file, context = {}, name = undefined) => {
+const process = (Config, Discovery, Manifest) => (file, context = {}) => {
     const templateMiddleware = (contents) => Velocity.render(contents, context);
 
     const manifest = Manifest.parse(context.type, context);
     const pluginName = context.plugin.vendor + context.plugin.name;
-    const fileName = manifest ? manifest.files[file] || file : file;
-
-    console.log('file', file);
-    console.log('manifest', manifest);
+    const fileName = (manifest && manifest.files)
+        ? manifest.files[file] || file
+        : file;
 
     const src = resolve(Config.templateDir, context.type, `${file}.vm`);
     const dest = resolve(Discovery.getPluginsDir(), pluginName, fileName);

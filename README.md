@@ -57,6 +57,29 @@ required details for creating a plugin.
 After the command finishes, your new plugin will be created in the
 `custom/plugins` directory and is ready for installation/activation.
 
+### CMS Blocks
+The following commands are used to work with Shopware 6 CMS blocks.
+
+#### Create
+In order to create a new CMS block, execute the following command from
+your plugin's root directory.
+
+```bash
+$ swag cms:block:create
+```
+
+This will guide you through an inquiry that will query all the
+required details for creating a CMS block.
+
+After the command finishes, your new block will be created within your
+plugin's directory.
+
+> **Important**
+>
+> To make the CMS element work, you have to include it in your
+> `src/Resources/app/administration/src/main.js` file and execute an
+> administration build. This is not done automatically at the moment.
+
 ## Testing
 Unit tests are powered by [Jest](https://jestjs.io) and can be run
 after cloning the repository:

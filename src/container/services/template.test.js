@@ -31,19 +31,13 @@ describe('file service', () => {
             outDir,
         }));
 
-        bottle.service('Discovery', () => ({
-            getPluginsDir() {
-                return resolve(outDir, 'custom/plugins');
-            },
-        }));
-
         bottle.service('Manifest', () => ({
             parse() {
                 return {};
             },
         }));
 
-        bottle.service('Template', Template, 'Config', 'Discovery', 'Manifest');
+        bottle.service('Template', Template, 'Config', 'Manifest');
     });
 
     afterAll(() => {
@@ -92,7 +86,7 @@ describe('file service', () => {
     it('copies and processes files', () => {
         const { process } = bottle.container.Template;
 
-        process('template', {
+        process('template', resolve(outDir, 'custom/plugins', 'VendorTest'), {
             type: 'plugin',
             content: 'template',
             plugin: {

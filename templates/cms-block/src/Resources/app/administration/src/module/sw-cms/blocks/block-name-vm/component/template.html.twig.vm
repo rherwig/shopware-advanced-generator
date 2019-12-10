@@ -1,0 +1,6 @@
+{% block sw_cms_block_${block.snakeName} %}
+    <div class="sw-cms-block-${block.name}">
+        <slot name="left" />
+        <slot name="right" />
+    </div>
+{% endblock %}

@@ -1,5 +1,6 @@
 import Bottle from 'bottlejs';
 import mock from 'mock-fs';
+import { join, resolve } from 'path';
 
 import Discovery from './discovery';
 
@@ -11,6 +12,11 @@ describe('discovery service', () => {
             '/var/test': {
                 custom: {
                     plugins: {},
+                },
+                test: {
+                    'composer.json': JSON.stringify({
+                        type: 'shopware-platform-plugin',
+                    }),
                 },
             },
         }, {
@@ -49,5 +55,17 @@ describe('discovery service', () => {
         const isPluginsDir = bottle.container.Discovery.isPluginsDir(pluginsDir);
 
         expect(isPluginsDir).toBe(true);
+    });
+
+    it('contains isPluginDir function', () => {
+        expect(typeof bottle.container.Discovery.isPluginDir).toBe('function');
+    });
+
+    it('detects plugin dir', () => {
+        const isPluginDir = bottle.container.Discovery.isPluginDir(
+            join(process.cwd(), 'test'),
+        );
+
+        expect(isPluginDir).toBe(true);
     });
 });

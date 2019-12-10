@@ -23,21 +23,23 @@ const copy = (src, dest, middlewares = []) => {
  * Copies a template while processing it using Velocity.
  *
  * @param Config
- * @param Discovery
  * @param Manifest
  * @returns {Function}
  */
-const process = (Config, Discovery, Manifest) => (file, context = {}) => {
+const process = (Config, Manifest) => (
+    file,
+    destPath = Config.cwd,
+    context = {},
+) => {
     const templateMiddleware = (contents) => Velocity.render(contents, context);
 
     const manifest = Manifest.parse(context.type, context);
-    const pluginName = context.plugin.vendor + context.plugin.name;
     const fileName = (manifest && manifest.files)
         ? manifest.files[file] || file
         : file;
 
     const src = resolve(Config.templateDir, context.type, `${file}.vm`);
-    const dest = resolve(Discovery.getPluginsDir(), pluginName, fileName);
+    const dest = resolve(destPath, fileName);
 
     const destDir = dirname(dest);
     if (!existsSync(destDir)) {

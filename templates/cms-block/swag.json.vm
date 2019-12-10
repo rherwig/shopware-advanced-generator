@@ -1,0 +1,12 @@
+{
+    "files": {
+        "src/Resources/app/administration/src/module/sw-cms/blocks/block-name-vm/index.js": "src/Resources/app/administration/src/module/sw-cms/blocks/${block.name}/index.js",
+        "src/Resources/app/administration/src/module/sw-cms/blocks/block-name-vm/preview/index.js": "src/Resources/app/administration/src/module/sw-cms/blocks/${block.name}/preview/index.js",
+        "src/Resources/app/administration/src/module/sw-cms/blocks/block-name-vm/preview/style.scss": "src/Resources/app/administration/src/module/sw-cms/blocks/${block.name}/preview/style.scss",
+        "src/Resources/app/administration/src/module/sw-cms/blocks/block-name-vm/preview/template.html.twig": "src/Resources/app/administration/src/module/sw-cms/blocks/${block.name}/preview/sw-cms-preview-${block.name}.html.twig",
+        "src/Resources/app/administration/src/module/sw-cms/blocks/block-name-vm/component/index.js": "src/Resources/app/administration/src/module/sw-cms/blocks/${block.name}/component/index.js",
+        "src/Resources/app/administration/src/module/sw-cms/blocks/block-name-vm/component/style.scss": "src/Resources/app/administration/src/module/sw-cms/blocks/${block.name}/component/style.scss",
+        "src/Resources/app/administration/src/module/sw-cms/blocks/block-name-vm/component/template.html.twig": "src/Resources/app/administration/src/module/sw-cms/blocks/${block.name}/component/sw-cms-block-${block.name}.html.twig",
+        "src/Resources/views/storefront/block/cms-block-block-name-vm.html.twig": "src/Resources/views/storefront/block/cms-block-${block.name}.html.twig"
+    }
+}

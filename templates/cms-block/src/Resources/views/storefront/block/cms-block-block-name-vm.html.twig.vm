@@ -1,0 +1,9 @@
+{% block block_cms_${block.snakeName} %}
+    <div class="block-${block.name}">
+        {% set element = block.slots.getSlot('one') %}
+        {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+
+        {% set element = block.slots.getSlot('two') %}
+        {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+    </div>
+{% endblock %}

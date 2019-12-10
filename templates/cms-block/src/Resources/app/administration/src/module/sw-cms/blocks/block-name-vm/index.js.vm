@@ -1,0 +1,16 @@
+import './component';
+import './preview';
+
+const { Service } = Shopware;
+
+Service('cmsService').registerCmsBlock({
+    name: '${block.name}',
+    label: '${block.titleName}',
+    category: 'commerce',
+    component: 'sw-cms-block-${block.name}',
+    previewComponent: 'sw-cms-preview-${block.name}',
+    slots: {
+        left: 'text',
+        right: 'text',
+    },
+});

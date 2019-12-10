@@ -5,3 +5,5 @@ export const CONFIG_FILE_TEMPLATE = 'swag.json.vm';
 export const EXLUDED_TEMPLATES = [
     CONFIG_FILE,
 ];
+
+export const COMPOSER_TYPE = 'shopware-platform-plugin';

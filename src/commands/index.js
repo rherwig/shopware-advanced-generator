@@ -1,4 +1,5 @@
-import registerGeneratePlugin from './plugin-create';
+import registerPluginCreate from './plugin-create';
+import registerCmsBlockCreate from './cms-block-create';
 
 /**
  * Registers all available commands.
@@ -6,5 +7,6 @@ import registerGeneratePlugin from './plugin-create';
  * @param {commander.Command} program
  */
 export default (program) => {
-    registerGeneratePlugin(program);
+    registerPluginCreate(program);
+    registerCmsBlockCreate(program);
 };

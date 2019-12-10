@@ -7,5 +7,5 @@ export default (bottle) => {
     bottle.service('Config', Config);
     bottle.service('Discovery', Discovery, 'Config');
     bottle.service('Manifest', Manifest, 'Config');
-    bottle.service('Template', Template, 'Config', 'Discovery', 'Manifest');
+    bottle.service('Template', Template, 'Config', 'Manifest');
 };

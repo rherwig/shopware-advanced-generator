@@ -1,6 +1,6 @@
 import Bottle from 'bottlejs';
 import mock from 'mock-fs';
-import { join, resolve } from 'path';
+import { join } from 'path';
 
 import Discovery from './discovery';
 

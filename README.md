@@ -17,6 +17,8 @@ It is designed to work with [Shopware 6](https://github.com/shopware/platform).
 - [Available Commands](#available-commands)
   - [Plugins](#plugins)
     - [Create](#create)
+  - [CMS Blocks](#cms-blocks)
+    - [Create](#create)
 - [Testing](#testing)
 - [Contributing](#contributing)
 - [Changelog](#changelog)

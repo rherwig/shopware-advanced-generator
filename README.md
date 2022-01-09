@@ -32,7 +32,7 @@ Install the CLI by executing the following command in a root
 environment:
 
 ```bash
-$ npm -g @hrwg/swag
+$ npm i -g @hrwg/swag
 ```
 
 ## Available Commands
